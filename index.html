@@ -9,29 +9,24 @@
   :root{--ink:#1a1208;--paper:#f5f0e8;--cream:#ede8d8;--amber:#c8873a;--amber-light:#e8a85a;--forest:#2d5a3d;--dusty:#8a7d6b;--pale:#d4cec0;--red:#b04030;--blue:#2a4a7a;--purple:#5a3a7a;}
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
   body{font-family:'Noto Serif JP',serif;background:var(--paper);color:var(--ink);min-height:100vh;}
-
   header{background:var(--ink);color:var(--paper);padding:14px 18px 12px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;border-bottom:3px solid var(--amber);position:sticky;top:0;z-index:50;}
   .logo{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:600;letter-spacing:0.1em;}
   .logo span{color:var(--amber);}
   .header-stats{font-family:'DM Mono',monospace;font-size:10px;color:var(--pale);text-align:right;line-height:1.8;}
-
   .toolbar{display:flex;align-items:center;gap:8px;padding:12px 14px;background:var(--cream);border-bottom:1px solid var(--pale);}
   .search-wrap{position:relative;flex:1;min-width:120px;}
   .search-wrap input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--pale);border-radius:8px;background:white;font-family:'Noto Serif JP',serif;font-size:14px;color:var(--ink);outline:none;}
   .search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:0.38;font-size:14px;}
   .btn-scan{padding:9px 13px;background:var(--ink);color:var(--paper);border:none;border-radius:8px;font-family:'Noto Serif JP',serif;font-size:13px;cursor:pointer;white-space:nowrap;}
   .btn-add{padding:9px 14px;background:var(--amber);color:white;border:none;border-radius:8px;font-family:'Noto Serif JP',serif;font-size:13px;cursor:pointer;white-space:nowrap;}
-
   .filter-bar{display:flex;gap:6px;padding:9px 14px;overflow-x:auto;background:var(--cream);border-bottom:1px solid var(--pale);-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   .filter-bar::-webkit-scrollbar{display:none;}
   .f-tab{flex-shrink:0;padding:5px 11px;background:white;border:1px solid var(--pale);border-radius:16px;font-family:'Noto Serif JP',serif;font-size:12px;cursor:pointer;color:var(--ink);white-space:nowrap;}
   .f-tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
   .f-tab .cnt{font-family:'DM Mono',monospace;font-size:10px;opacity:0.55;margin-left:3px;}
-
   .vis-bar{display:flex;gap:6px;padding:7px 14px;background:var(--cream);border-bottom:1px solid var(--pale);}
   .vis-btn{padding:4px 11px;font-size:11px;font-family:'DM Mono',monospace;border:1px solid var(--pale);border-radius:12px;background:none;cursor:pointer;color:var(--dusty);}
   .vis-btn.active{background:var(--amber);border-color:var(--amber);color:white;}
-
   main{padding:13px 11px;}
   .books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:11px;}
   .book-card{background:white;border:1px solid var(--pale);border-radius:10px;overflow:hidden;cursor:pointer;position:relative;}
@@ -41,22 +36,14 @@
   .book-author{font-size:10px;color:var(--dusty);margin-bottom:6px;}
   .book-tags{display:flex;flex-wrap:wrap;gap:3px;}
   .tag{padding:2px 6px;border-radius:9px;font-size:9px;font-family:'DM Mono',monospace;white-space:nowrap;}
-  .tag-own{background:#e8f4e8;color:var(--forest);}
-  .tag-past{background:#f0e8d8;color:#7a5a20;}
-  .tag-lib{background:#e8eef8;color:var(--blue);}
-  .tag-browse{background:#f4e8f0;color:var(--purple);}
-  .tag-lib1{background:#ffe8e8;color:var(--red);}
-  .tag-lib2{background:#e8f0ff;color:var(--blue);}
-  .tag-lib3{background:#e8ffe8;color:var(--forest);}
-  .tag-lib4{background:#fff8e8;color:#8a6020;}
-  .tag-lib5{background:#f0e8ff;color:var(--purple);}
+  .tag-own{background:#e8f4e8;color:var(--forest);}.tag-past{background:#f0e8d8;color:#7a5a20;}.tag-lib{background:#e8eef8;color:var(--blue);}.tag-browse{background:#f4e8f0;color:var(--purple);}
+  .tag-lib1{background:#ffe8e8;color:var(--red);}.tag-lib2{background:#e8f0ff;color:var(--blue);}.tag-lib3{background:#e8ffe8;color:var(--forest);}.tag-lib4{background:#fff8e8;color:#8a6020;}.tag-lib5{background:#f0e8ff;color:var(--purple);}
   .tag-genre{background:var(--cream);color:var(--dusty);border:1px solid var(--pale);}
   .vis-badge{position:absolute;top:7px;right:7px;font-size:12px;}
   .status-badge{position:absolute;top:7px;left:7px;font-size:9px;font-family:'DM Mono',monospace;background:rgba(26,18,8,0.72);color:white;padding:2px 5px;border-radius:4px;}
   .spine-0{background:linear-gradient(135deg,#fde8d8,#f4c4a0)}.spine-1{background:linear-gradient(135deg,#d8eaf8,#a8cce8)}.spine-2{background:linear-gradient(135deg,#d8f4d8,#a0d4a0)}.spine-3{background:linear-gradient(135deg,#f4d8f4,#d4a0d4)}.spine-4{background:linear-gradient(135deg,#f8f0d8,#e8d4a0)}.spine-5{background:linear-gradient(135deg,#d8f4f0,#a0d8d0)}.spine-6{background:linear-gradient(135deg,#f0d8d8,#e0a8a8)}.spine-7{background:linear-gradient(135deg,#e8d8f8,#c8a8e8)}.spine-8{background:linear-gradient(135deg,#d8e8e0,#a8c8b8)}.spine-9{background:linear-gradient(135deg,#f8f0e0,#e8d8b8)}
   .empty-state{text-align:center;padding:60px 20px;color:var(--dusty);grid-column:1/-1;}
   .empty-state .icon{font-size:44px;margin-bottom:10px;}
-
   .modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,18,8,0.52);z-index:100;align-items:flex-end;justify-content:center;}
   .modal-overlay.open{display:flex;}
   .modal{background:var(--paper);border-radius:18px 18px 0 0;width:100%;max-width:600px;max-height:92vh;overflow-y:auto;padding:22px 18px 40px;position:relative;}
@@ -76,13 +63,11 @@
   .btn-save{flex:2;padding:13px;background:var(--ink);color:white;border:none;border-radius:10px;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:14px;}
   .btn-delete{padding:13px 15px;background:none;border:1px solid var(--red);color:var(--red);border-radius:10px;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:14px;}
   .close-btn{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--dusty);}
-
-  /* SCANNER */
   #scanModal{max-width:500px;}
-  #quagga-container{position:relative;width:100%;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px;}
+  #quagga-container{position:relative;width:100%;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px;min-height:200px;}
   #quagga-container video{width:100%;display:block;}
-  #quagga-container canvas{position:absolute;top:0;left:0;width:100%;height:100%;}
-  .scan-frame-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+  #quagga-container canvas.drawingBuffer{position:absolute;top:0;left:0;width:100% !important;height:100% !important;}
+  .scan-frame-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:10;}
   .scan-frame{width:75%;height:35%;border:2.5px solid var(--amber);border-radius:8px;box-shadow:0 0 0 9999px rgba(0,0,0,0.46);position:relative;overflow:hidden;}
   .scan-line{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent);animation:scanline 2s ease-in-out infinite;}
   @keyframes scanline{0%,100%{top:0}50%{top:calc(100% - 2px)}}
@@ -134,10 +119,10 @@
         <div class="scan-frame"><div class="scan-line"></div></div>
       </div>
     </div>
-    <p class="scan-hint">本の裏のバーコードを枠に合わせてください<br>認識されると自動で書籍情報を取得します</p>
+    <p class="scan-hint">本の裏のバーコードを枠に合わせてください</p>
     <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--dusty);margin-bottom:6px;">ISBNを直接入力することもできます</div>
     <div class="isbn-row">
-      <input type="tel" id="isbnInput" placeholder="例：9784000000000" maxlength="17" inputmode="numeric">
+      <input type="tel" id="isbnInput" placeholder="例：9784761930240" maxlength="17" inputmode="numeric">
       <button class="btn-lookup" onclick="lookupManual()">検索</button>
     </div>
     <div class="scan-status" id="scanStatus"></div>
@@ -223,7 +208,6 @@
   </div>
 </div>
 
-<!-- Quagga2: iPhone Safari対応のバーコードライブラリ -->
 <script src="https://cdn.jsdelivr.net/npm/@ericblade/quagga2@1.8.4/dist/quagga.min.js"></script>
 <script>
 const GENRES=['文学・小説','歴史・時代小説','ミステリ・推理','SF・ファンタジー','ビジネス・経済','自己啓発','科学・技術','アート・デザイン','哲学・思想','その他'];
@@ -238,11 +222,8 @@ let quaggaRunning=false,lastScanned='',scanCooldown=false;
 
 function init(){
   if(!books.length)addSamples();
-  buildFilterBar();
-  buildGenreCheckboxes();
-  renderBooks();
+  buildFilterBar();buildGenreCheckboxes();renderBooks();
 }
-
 function addSamples(){
   const s=[
     {title:'坊っちゃん',author:'夏目漱石',publisher:'岩波書店',isbn:'9784003100110',status:'done',location:'own',libs:[],genres:[0],visibility:'public',memo:''},
@@ -255,7 +236,6 @@ function addSamples(){
   books=s.map((b,i)=>({...b,id:'s'+i,addedAt:Date.now()-i*86400000}));
   save();
 }
-
 function buildGenreCheckboxes(){
   document.getElementById('genreCheckboxes').innerHTML=GENRES.map((g,i)=>
     `<label class="checkbox-item"><input type="checkbox" name="genre" value="${i}">${GENRE_EMOJI[i]} ${g}</label>`).join('');
@@ -307,9 +287,7 @@ function renderBooks(){
   const pub=books.filter(b=>b.visibility==='public').length;
   const priv=books.filter(b=>b.visibility==='private').length;
   document.getElementById('headerStats').innerHTML=`全${books.length}冊　🌐${pub}　🔒${priv}`;
-  document.querySelectorAll('.f-tab').forEach(el=>{
-    el.querySelector('.cnt').textContent=cnt(el.getAttribute('data-filter'));
-  });
+  document.querySelectorAll('.f-tab').forEach(el=>{el.querySelector('.cnt').textContent=cnt(el.getAttribute('data-filter'));});
   if(!filtered.length){grid.innerHTML=`<div class="empty-state"><div class="icon">📚</div><p>本が見つかりません</p></div>`;return;}
   grid.innerHTML=filtered.map(b=>{
     const gi=(b.genres||[])[0]??hashStr(b.title);
@@ -334,12 +312,9 @@ function renderBooks(){
 function setFilter(f,el){currentFilter=f;document.querySelectorAll('.f-tab').forEach(b=>b.classList.remove('active'));el.classList.add('active');renderBooks();}
 function setVisFilter(v,el){visFilter=v;document.querySelectorAll('.vis-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');renderBooks();}
 
-// ── BOOK MODAL ──
 function clearForm(){
   ['f_title','f_author','f_publisher','f_isbn','f_memo'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('f_status').value='want';
-  document.getElementById('f_location').value='own';
-  document.getElementById('f_visibility').value='public';
+  document.getElementById('f_status').value='want';document.getElementById('f_location').value='own';document.getElementById('f_visibility').value='public';
   document.querySelectorAll('input[name="lib"]').forEach(c=>c.checked=false);
   document.querySelectorAll('input[name="genre"]').forEach(c=>c.checked=false);
   toggleLibSection();
@@ -354,18 +329,13 @@ function openAdd(){editId=null;document.getElementById('modalTitle').textContent
 function openEdit(id){
   const b=books.find(x=>x.id===id);if(!b)return;
   editId=id;document.getElementById('modalTitle').textContent='本を編集';document.getElementById('btnDelete').style.display='';
-  document.getElementById('f_title').value=b.title;
-  document.getElementById('f_author').value=b.author||'';
-  document.getElementById('f_publisher').value=b.publisher||'';
-  document.getElementById('f_isbn').value=b.isbn||'';
-  document.getElementById('f_status').value=b.status;
-  document.getElementById('f_location').value=b.location;
-  document.getElementById('f_visibility').value=b.visibility||'public';
-  document.getElementById('f_memo').value=b.memo||'';
+  document.getElementById('f_title').value=b.title;document.getElementById('f_author').value=b.author||'';
+  document.getElementById('f_publisher').value=b.publisher||'';document.getElementById('f_isbn').value=b.isbn||'';
+  document.getElementById('f_status').value=b.status;document.getElementById('f_location').value=b.location;
+  document.getElementById('f_visibility').value=b.visibility||'public';document.getElementById('f_memo').value=b.memo||'';
   document.querySelectorAll('input[name="lib"]').forEach(c=>{c.checked=(b.libs||[]).includes(c.value);});
   document.querySelectorAll('input[name="genre"]').forEach(c=>{c.checked=(b.genres||[]).includes(parseInt(c.value));});
-  toggleLibSection();
-  document.getElementById('modalOverlay').classList.add('open');
+  toggleLibSection();document.getElementById('modalOverlay').classList.add('open');
 }
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');}
 function toggleLibSection(){document.getElementById('libSection').style.display=document.getElementById('f_location').value==='lib'?'':'none';}
@@ -380,8 +350,7 @@ function saveBook(){
     title,author:document.getElementById('f_author').value.trim(),
     publisher:document.getElementById('f_publisher').value.trim(),
     isbn:document.getElementById('f_isbn').value.trim(),
-    status:document.getElementById('f_status').value,
-    location:document.getElementById('f_location').value,
+    status:document.getElementById('f_status').value,location:document.getElementById('f_location').value,
     libs,genres,visibility:document.getElementById('f_visibility').value,
     memo:document.getElementById('f_memo').value.trim(),
     addedAt:editId?(books.find(b=>b.id===editId)||{}).addedAt:Date.now()
@@ -396,18 +365,22 @@ function deleteBook(){
   save();buildFilterBar();closeModal();renderBooks();
 }
 
-// ── ISBN LOOKUP ──
+// ── ISBN検索（3段階） ──
 function setScanStatus(type,msg){
   const el=document.getElementById('scanStatus');
-  el.className='scan-status '+type;
-  el.textContent=msg;
+  el.className='scan-status '+type;el.textContent=msg;
 }
+
 async function fetchISBN(raw){
   const isbn=raw.replace(/[-\s]/g,'');
-  if(!/^(978|979)\d{10}$|^\d{10}$/.test(isbn)){setScanStatus('error','ISBNの形式が正しくありません（13桁で入力）');return null;}
-  setScanStatus('loading','🔍 書籍情報を検索中…');
+  if(!/^(978|979)\d{10}$|^\d{10}$/.test(isbn)){
+    setScanStatus('error','ISBNの形式が正しくありません（13桁で入力）');return null;
+  }
+  setScanStatus('loading','🔍 書籍情報を検索中…（1/3）国立国会図書館');
+
+  // 1) 国立国会図書館
   try{
-    const r=await fetch(`https://ndlsearch.ndl.go.jp/api/opensearch?isbn=${isbn}&mediatype=1`,{signal:AbortSignal.timeout(8000)});
+    const r=await fetch(`https://ndlsearch.ndl.go.jp/api/opensearch?isbn=${isbn}&mediatype=1`,{signal:AbortSignal.timeout(7000)});
     const xml=new DOMParser().parseFromString(await r.text(),'text/xml');
     const items=xml.querySelectorAll('item');
     if(items.length){
@@ -415,18 +388,40 @@ async function fetchISBN(raw){
       const title=it.querySelector('title')?.textContent?.trim()||'';
       const creator=it.getElementsByTagNameNS('http://purl.org/dc/elements/1.1/','creator')[0]?.textContent?.trim()||'';
       const publisher=it.getElementsByTagNameNS('http://purl.org/dc/elements/1.1/','publisher')[0]?.textContent?.trim()||'';
-      if(title)return{title,author:creator,publisher,isbn};
+      if(title){console.log('NDL hit');return{title,author:creator,publisher,isbn};}
     }
-  }catch(e){}
+  }catch(e){console.warn('NDL failed',e);}
+
+  // 2) Google Books API（日本の書籍に強い）
+  setScanStatus('loading','🔍 書籍情報を検索中…（2/3）Google Books');
   try{
-    const r=await fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`,{signal:AbortSignal.timeout(8000)});
+    const r=await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&langRestrict=ja`,{signal:AbortSignal.timeout(7000)});
+    const data=await r.json();
+    if(data.totalItems>0&&data.items?.length){
+      const info=data.items[0].volumeInfo;
+      const title=info.title||'';
+      const author=(info.authors||[]).join(', ');
+      const publisher=info.publisher||'';
+      if(title){console.log('Google Books hit');return{title,author,publisher,isbn};}
+    }
+  }catch(e){console.warn('Google Books failed',e);}
+
+  // 3) Open Library
+  setScanStatus('loading','🔍 書籍情報を検索中…（3/3）Open Library');
+  try{
+    const r=await fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`,{signal:AbortSignal.timeout(7000)});
     const data=await r.json();
     const info=data[`ISBN:${isbn}`];
-    if(info?.title)return{title:info.title,author:(info.authors||[]).map(a=>a.name).join(', '),publisher:(info.publishers||[]).map(p=>p.name).join(', '),isbn};
-  }catch(e){}
-  setScanStatus('error',`ISBN ${isbn} の情報が見つかりませんでした`);
+    if(info?.title){
+      console.log('OpenLibrary hit');
+      return{title:info.title,author:(info.authors||[]).map(a=>a.name).join(', '),publisher:(info.publishers||[]).map(p=>p.name).join(', '),isbn};
+    }
+  }catch(e){console.warn('OpenLibrary failed',e);}
+
+  setScanStatus('error',`ISBN ${isbn} の情報が3つのデータベースで見つかりませんでした。\n「＋ 追加」から手動で入力することができます。`);
   return null;
 }
+
 async function onISBNFound(isbn){
   if(scanCooldown||isbn===lastScanned)return;
   lastScanned=isbn;scanCooldown=true;setTimeout(()=>scanCooldown=false,5000);
@@ -441,6 +436,7 @@ async function onISBNFound(isbn){
     document.getElementById('modalOverlay').classList.add('open');
   },900);
 }
+
 async function lookupManual(){
   const isbn=document.getElementById('isbnInput').value.trim();
   if(!isbn)return;
@@ -455,60 +451,43 @@ async function lookupManual(){
   },700);
 }
 
-// ── QUAGGA2 SCANNER ──
+// ── Quagga2スキャナー ──
 function openScanner(){
   lastScanned='';scanCooldown=false;
   document.getElementById('scanStatus').className='scan-status';
   document.getElementById('isbnInput').value='';
   document.getElementById('scanOverlay').classList.add('open');
-
   if(typeof Quagga==='undefined'){
-    setScanStatus('error','ライブラリの読み込みに失敗しました。\nページを再読み込みしてお試しください。');
-    return;
+    setScanStatus('error','ライブラリの読み込みに失敗しました。\nページを再読み込みしてお試しください。');return;
   }
   startQuagga();
 }
-
 function startQuagga(){
-  const container=document.getElementById('quagga-container');
-  // コンテナの高さをvideoのアスペクト比に合わせる
-  container.style.minHeight='200px';
-
   Quagga.init({
     inputStream:{
-      name:'Live',
-      type:'LiveStream',
-      target:container,
-      constraints:{
-        facingMode:'environment',  // 背面カメラ
-        width:{min:640,ideal:1280,max:1920},
-        height:{min:480,ideal:720,max:1080},
-      },
+      name:'Live',type:'LiveStream',
+      target:document.getElementById('quagga-container'),
+      constraints:{facingMode:'environment',width:{min:640,ideal:1280},height:{min:480,ideal:720}},
       area:{top:'25%',right:'10%',left:'10%',bottom:'25%'},
     },
     locator:{patchSize:'medium',halfSample:true},
-    numOfWorkers:0,  // iOSはWorker非対応のため0
+    numOfWorkers:0,
     frequency:10,
-    decoder:{
-      readers:['ean_reader','ean_8_reader','code_128_reader'],
-      multiple:false,
-    },
+    decoder:{readers:['ean_reader','ean_8_reader','code_128_reader'],multiple:false},
     locate:true,
-  }, function(err){
+  },function(err){
     if(err){
-      console.error('Quagga init error:',err);
       if(err.name==='NotAllowedError'||err.message?.includes('Permission')){
-        setScanStatus('error','カメラの使用が許可されていません。\nSafari設定 → このWebサイト → カメラ → 許可\nに変更してから再度お試しください。');
+        setScanStatus('error','カメラの使用が許可されていません。\niPhone設定 → Safari → カメラ → 許可\nに変更してから再度お試しください。');
       }else{
-        setScanStatus('error','カメラの起動に失敗しました。\n手動でISBNを入力してください。\n詳細: '+err.message);
+        setScanStatus('error','カメラの起動に失敗しました。\n手動でISBNを入力してください。');
       }
       return;
     }
     quaggaRunning=true;
     Quagga.start();
-    setScanStatus('info','カメラが起動しました📷\nバーコードを枠内に合わせてください');
+    setScanStatus('info','カメラが起動しました 📷\nバーコードを枠内に合わせてください');
   });
-
   Quagga.onDetected(function(result){
     if(!quaggaRunning)return;
     const code=result?.codeResult?.code;
@@ -519,17 +498,13 @@ function startQuagga(){
     }
   });
 }
-
 function stopQuagga(){
   if(quaggaRunning){
     try{Quagga.offDetected();Quagga.stop();}catch(e){}
     quaggaRunning=false;
-    // Quaggaが追加したvideo/canvasを削除してコンテナをリセット
-    const container=document.getElementById('quagga-container');
-    container.querySelectorAll('video,canvas').forEach(el=>el.remove());
+    document.getElementById('quagga-container').querySelectorAll('video,canvas').forEach(el=>el.remove());
   }
 }
-
 function closeScanner(){
   stopQuagga();
   document.getElementById('scanOverlay').classList.remove('open');
