@@ -220,10 +220,7 @@ let books=JSON.parse(localStorage.getItem('myBookshelf')||'[]');
 let currentFilter='all',visFilter='all',editId=null;
 let quaggaRunning=false,lastScanned='',scanCooldown=false;
 
-function init(){
-  if(!books.length)addSamples();
-  buildFilterBar();buildGenreCheckboxes();renderBooks();
-}
+function init(){if(!books.length)addSamples();buildFilterBar();buildGenreCheckboxes();renderBooks();}
 function addSamples(){
   const s=[
     {title:'坊っちゃん',author:'夏目漱石',publisher:'岩波書店',isbn:'9784003100110',status:'done',location:'own',libs:[],genres:[0],visibility:'public',memo:''},
@@ -233,8 +230,7 @@ function addSamples(){
     {title:'星を継ぐもの',author:'ジェイムズ・P・ホーガン',publisher:'東京創元社',isbn:'9784488663018',status:'want',location:'lib',libs:['4'],genres:[3],visibility:'public',memo:''},
     {title:'デザインの骨格',author:'山中俊治',publisher:'日経BP',isbn:'9784822230333',status:'done',location:'own',libs:[],genres:[7],visibility:'public',memo:''},
   ];
-  books=s.map((b,i)=>({...b,id:'s'+i,addedAt:Date.now()-i*86400000}));
-  save();
+  books=s.map((b,i)=>({...b,id:'s'+i,addedAt:Date.now()-i*86400000}));save();
 }
 function buildGenreCheckboxes(){
   document.getElementById('genreCheckboxes').innerHTML=GENRES.map((g,i)=>
@@ -365,7 +361,7 @@ function deleteBook(){
   save();buildFilterBar();closeModal();renderBooks();
 }
 
-// ── ISBN検索（3段階） ──
+// ── ISBN検索（4段階） ──
 function setScanStatus(type,msg){
   const el=document.getElementById('scanStatus');
   el.className='scan-status '+type;el.textContent=msg;
@@ -376,9 +372,23 @@ async function fetchISBN(raw){
   if(!/^(978|979)\d{10}$|^\d{10}$/.test(isbn)){
     setScanStatus('error','ISBNの形式が正しくありません（13桁で入力）');return null;
   }
-  setScanStatus('loading','🔍 書籍情報を検索中…（1/3）国立国会図書館');
 
-  // 1) 国立国会図書館
+  // 1) openBD（日本の出版社・取次が直接登録。最も網羅性が高い）
+  setScanStatus('loading','🔍 検索中… openBD（日本書籍データベース）');
+  try{
+    const r=await fetch(`https://api.openbd.jp/v1/get?isbn=${isbn}`,{signal:AbortSignal.timeout(8000)});
+    const data=await r.json();
+    if(data&&data[0]){
+      const summary=data[0].summary;
+      const title=summary?.title||'';
+      const author=summary?.author||'';
+      const publisher=summary?.publisher||'';
+      if(title){console.log('openBD hit');return{title,author,publisher,isbn};}
+    }
+  }catch(e){console.warn('openBD failed',e);}
+
+  // 2) 国立国会図書館
+  setScanStatus('loading','🔍 検索中… 国立国会図書館');
   try{
     const r=await fetch(`https://ndlsearch.ndl.go.jp/api/opensearch?isbn=${isbn}&mediatype=1`,{signal:AbortSignal.timeout(7000)});
     const xml=new DOMParser().parseFromString(await r.text(),'text/xml');
@@ -392,10 +402,10 @@ async function fetchISBN(raw){
     }
   }catch(e){console.warn('NDL failed',e);}
 
-  // 2) Google Books API（日本の書籍に強い）
-  setScanStatus('loading','🔍 書籍情報を検索中…（2/3）Google Books');
+  // 3) Google Books
+  setScanStatus('loading','🔍 検索中… Google Books');
   try{
-    const r=await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&langRestrict=ja`,{signal:AbortSignal.timeout(7000)});
+    const r=await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`,{signal:AbortSignal.timeout(7000)});
     const data=await r.json();
     if(data.totalItems>0&&data.items?.length){
       const info=data.items[0].volumeInfo;
@@ -406,8 +416,8 @@ async function fetchISBN(raw){
     }
   }catch(e){console.warn('Google Books failed',e);}
 
-  // 3) Open Library
-  setScanStatus('loading','🔍 書籍情報を検索中…（3/3）Open Library');
+  // 4) Open Library
+  setScanStatus('loading','🔍 検索中… Open Library');
   try{
     const r=await fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`,{signal:AbortSignal.timeout(7000)});
     const data=await r.json();
@@ -418,7 +428,7 @@ async function fetchISBN(raw){
     }
   }catch(e){console.warn('OpenLibrary failed',e);}
 
-  setScanStatus('error',`ISBN ${isbn} の情報が3つのデータベースで見つかりませんでした。\n「＋ 追加」から手動で入力することができます。`);
+  setScanStatus('error',`ISBN ${isbn} の情報が見つかりませんでした。\nISBNが正しいか確認するか、「＋ 追加」から手動で入力してください。`);
   return null;
 }
 
@@ -457,9 +467,7 @@ function openScanner(){
   document.getElementById('scanStatus').className='scan-status';
   document.getElementById('isbnInput').value='';
   document.getElementById('scanOverlay').classList.add('open');
-  if(typeof Quagga==='undefined'){
-    setScanStatus('error','ライブラリの読み込みに失敗しました。\nページを再読み込みしてお試しください。');return;
-  }
+  if(typeof Quagga==='undefined'){setScanStatus('error','ライブラリの読み込みに失敗しました。ページを再読み込みしてください。');return;}
   startQuagga();
 }
 function startQuagga(){
@@ -484,8 +492,7 @@ function startQuagga(){
       }
       return;
     }
-    quaggaRunning=true;
-    Quagga.start();
+    quaggaRunning=true;Quagga.start();
     setScanStatus('info','カメラが起動しました 📷\nバーコードを枠内に合わせてください');
   });
   Quagga.onDetected(function(result){
@@ -493,9 +500,7 @@ function startQuagga(){
     const code=result?.codeResult?.code;
     if(!code)return;
     const clean=code.replace(/\D/g,'');
-    if(/^(978|979)\d{10}$/.test(clean)||/^\d{10}$/.test(clean)){
-      onISBNFound(clean);
-    }
+    if(/^(978|979)\d{10}$/.test(clean)||/^\d{10}$/.test(clean)){onISBNFound(clean);}
   });
 }
 function stopQuagga(){
